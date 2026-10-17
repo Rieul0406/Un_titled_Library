@@ -18,5 +18,5 @@ using ll = long long;
 const ll MOD = 998244353;
 
 ll moddiv(ll a, ll b){
-    return (a * modpow(b, MOD - 2, MOD)) % MOD;
+    return (a * modpow(b, MOD - 2)) % MOD;
 }
