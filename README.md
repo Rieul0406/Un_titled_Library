@@ -33,7 +33,7 @@
 
 Items with strikethroughs are not implemented yet.
 
-取り消し線の入っている項目は、まだ未実装です。
+取り消し線の入っている項目は未実装です。
 
 # 🥕 Issues & Contributions 🐛
 
