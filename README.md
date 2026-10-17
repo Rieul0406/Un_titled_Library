@@ -26,6 +26,7 @@
     - [~~weighted Union-Find~~](graph/weightedUF.hpp)
     - [Strongly Connected Component by Kosaraju's algorithm](graph/scc.hpp)
     - [Topological Sort by Kahn algorithm](graph/TopologicalSort.hpp)
+    - [max cost flow by Forld Fulkerson algorighm](graph/MaxFlow.hpp)
 - [string](string)
     - [Rolling Hash](string/RollingHash.hpp)
 - [misc](misc)
