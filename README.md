@@ -29,6 +29,7 @@
     - [max cost flow by Forld Fulkerson algorighm](graph/MaxFlow.hpp)
 - [string](string)
     - [Rolling Hash](string/RollingHash.hpp)
+    - [Manacher](string/Manacher.hpp)
 - [misc](misc)
     - [Zorbrist Hash](misc/ZobristHash.hpp)
 
