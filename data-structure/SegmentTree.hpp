@@ -22,18 +22,31 @@
 using namespace std;
 using ll = long long;
 
+struct Dat{
+    ll v;
+
+    Dat operator+(const Dat& other) const {
+        return {v + other.v};
+    }
+
+    Dat& operator+=(const Dat& other) {
+        v += other.v;
+        return *this;
+    }
+};
+
 class segmenttree{
     public:
-    vector<ll> data;
+    vector<Dat> data;
     ll siz;
-    ll val = 0; // 区間和
-    // ll val = -INF; // 区間最大値
-    // ll val = INF; // 区間最小値
+    Dat val = {0LL}; // 区間和
+    // Dat val = {-INF}; // 区間最大値
+    // Dat val = {INF}; // 区間最小値
 
-    ll op(ll a, ll b){
+    Dat op(Dat a, Dat b){
         return a + b; // 区間和
-        // return max(a, b); // 区間最大値
-        // return min(a, b); // 区間最小値
+        // return {max(a, b)}; // 区間最大値
+        // return {min(a, b)}; // 区間最小値
     }
 
     segmenttree(){}
@@ -42,7 +55,7 @@ class segmenttree{
         init(n);
     }
 
-    segmenttree(vector<ll> vec){
+    segmenttree(vector<Dat> vec){
         int n = vec.size();
         init(n);
         for(int i = 0; i < n; i++) data[siz + i] = vec[i];
@@ -52,10 +65,10 @@ class segmenttree{
     void init(ll n){
         siz = 1LL;
         while(n > siz) siz <<= 1;
-        data.resize(siz * 2, val);
+        data.assign(siz * 2, val);
     }
 
-    void update(ll pos, ll value){
+    void update(int pos, Dat value){
         pos += siz;
         data[pos] = value;
         while(pos >= 2){
@@ -64,7 +77,7 @@ class segmenttree{
         }
     }
 
-    void add(ll pos, ll value){
+    void add(ll pos, Dat value){
         pos += siz;
         data[pos] += value;
         while(pos >= 2){
@@ -74,17 +87,17 @@ class segmenttree{
     }
 
     // [left, right) の区間クエリ
-    ll query(ll left, ll right){
+    Dat query(ll left, ll right){
         return _query(left, right, 0, siz, 1);
     }
 
     private:
-    ll _query(ll left, ll right, ll open, ll close, ll now){
+    Dat _query(ll left, ll right, ll open, ll close, ll now){
         if(right <= open || close <= left) return val;
         if(left <= open && close <= right) return data[now];
         ll middle = (open + close) / 2;
-        ll ansl = _query(left, right, open, middle, now * 2);
-        ll ansr = _query(left, right, middle, close, now * 2 + 1);
+        Dat ansl = _query(left, right, open, middle, now * 2);
+        Dat ansr = _query(left, right, middle, close, now * 2 + 1);
         return op(ansl, ansr);
     }
 };
