@@ -1,9 +1,12 @@
+/*
+https://github.com/Rieul0406/Un_titled_Library
+*/
 #include <bits/stdc++.h>
 #include <atcoder/all>
 using namespace std;
 using namespace atcoder;
 #ifdef LOCAL
-#define debug(x) std::cerr << (x) << std::endl
+#define debug(x) std::cerr << x
 #else
 #define debug(x)
 #endif
