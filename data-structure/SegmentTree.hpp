@@ -26,11 +26,15 @@ struct Dat{
     ll v;
 
     Dat operator+(const Dat& other) const {
-        return {v + other.v};
+        return {v + other.v}; // 区間和
+        // return {max(v, other.v)}; // 区間最大値
+        // return {min(v, other.v)}; // 区間最小値
     }
 
     Dat& operator+=(const Dat& other) {
-        v += other.v;
+        v += other.v; // 区間和
+        // v = max(v, other.v); // 区間最大値
+        // v = min(v, other.v); // 区間最小値
         return *this;
     }
 };
@@ -44,9 +48,7 @@ class segmenttree{
     // Dat val = {INF}; // 区間最小値
 
     Dat op(Dat a, Dat b){
-        return a + b; // 区間和
-        // return {max(a, b)}; // 区間最大値
-        // return {min(a, b)}; // 区間最小値
+        return a + b;
     }
 
     segmenttree(){}
